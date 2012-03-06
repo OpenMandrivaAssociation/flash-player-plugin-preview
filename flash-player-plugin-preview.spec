@@ -1,7 +1,7 @@
 
 %define name	flash-player-plugin-preview
 # see http://www.adobe.com/software/flash/about/ for version test
-%define version	10.3.162.29
+%define version	11.1.102.63
 %define plev	p3
 %define tardate	111710
 %define rel	1
@@ -21,7 +21,6 @@ Group:		Networking/WWW
 ExclusiveArch:	x86_64
 Requires:	curl
 Requires(post):	curl
-BuildRoot:	%{_tmppath}/%{name}-root
 
 # obtained by objdump -x /usr/lib/mozilla/plugins/libflashplayer.so | grep NEEDED
 # helper: for i in $(objdump -p libflashplayer.so  | grep NEEDED | awk '{ print $2 }'); do
@@ -29,7 +28,7 @@ BuildRoot:	%{_tmppath}/%{name}-root
 #		libX11.so.6	libXext.so.6	libXt.so.6	libfreetype.so.6
 Requires:	%{_lib}x11_6	%{_lib}xext6	%{_lib}xt6	%{_lib}freetype6
 #		libfontconfig.so.1	libgtk-x11-2.0.so.0, libgdk-x11-2.0.so.0
-Requires:       %{_lib}fontconfig1	%{_lib}gtk+-x11-2.0_0
+Requires:       %{_lib}fontconfig1	%{_lib}gtk+2.0_0
 #		libatk-1.0.so.0	libgdk_pixbuf-2.0.so.0	libpangocairo-1.0.so.0, libpango-1.0.so.0
 Requires:	%{_lib}atk1.0_0	%{_lib}gdk_pixbuf2.0_0	%{_lib}pango1.0_0
 #		libcairo.so.2	libgobject-2.0.so.0, libgmodule-2.0.so.0, libglib-2.0.so.0
@@ -83,20 +82,21 @@ license.
 # The linuxdownload.adobe.com rpm usually stays up longer, but fpdownload.macromedia.com is faster.
 # Their md5sums differ.
 %ifarch %ix86
-%define downurl1 http://download.macromedia.com/pub/labs/flashplayer10/flashplayer10_2_%{plev}_32bit_linux_%{tardate}.tar.gz
-%define tmd5sum1 3a5c1e0a77bb44d3456c933a056bcf47
+#%define downurl1 http://download.macromedia.com/pub/labs/flashplayer10/flashplayer10_2_%{plev}_32bit_linux_%{tardate}.tar.gz
+%define downurl1 http://fpdownload.macromedia.com/get/flashplayer/pdc/%{version}/install_flash_player_11_linux.i386.tar.gz
+%define tmd5sum1 edc3326dd25adee13a8109834d8c05ce
 %define downurl2 %nil
 %define tmd5sum2 %nil
-%define tarname flashplayer10_2_%{plev}_32bit_linux_%{tardate}.tar.gz
+%define tarname install_flash_player_11_linux.i386.tar.gz
 %define tartype	tar
 %define srcdir	%nil
 %endif
 %ifarch x86_64
-%define downurl1 http://download.macromedia.com/pub/labs/flashplayer10/flashplayer10_2_%{plev}_64bit_linux_%{tardate}.tar.gz
-%define tmd5sum1 49b55c7eb8044453e5f6f2e4b3cb4084
+%define downurl1 http://fpdownload.macromedia.com/get/flashplayer/pdc/%{version}/install_flash_player_11_linux.x86_64.tar.gz
+%define tmd5sum1 144b9ab0fec08d589b5369b1417d8332
 %define downurl2 %nil
 %define tmd5sum2 %nil
-%define tarname flashplayer10_2_%{plev}_64bit_linux_%{tardate}.tar.gz
+%define tarname install_flash_player_11_linux.x86_64.tar.gz
 %define tartype tar
 %define srcdir  %nil
 %endif
@@ -146,9 +146,6 @@ touch %{buildroot}%{_localstatedir}/lib/%{name}/%{tarname}
 install -d -m755 %{buildroot}%{_sbindir}
 install -m755 download-flash-player-plugin %{buildroot}%{_sbindir}
 
-%clean
-rm -rf %{buildroot}
-
 # posttrans so that we can use postun safely without if's :)
 %posttrans
 %{_sbindir}/download-flash-player-plugin
@@ -168,7 +165,3 @@ fi
 %dir %{_libdir}/mozilla
 %dir %{_libdir}/mozilla/plugins
 %ghost %{_libdir}/mozilla/plugins/libflashplayer.so
-%if %mdkversion < 200800
-%{_libdir}/opera
-%endif
-
