@@ -1,7 +1,7 @@
 
 %define name	flash-player-plugin-preview
 # see http://www.adobe.com/software/flash/about/ for version test
-%define version	11.1.102.63
+%define version	11.2.202.233
 %define plev	p3
 %define tardate	111710
 %define rel	1
