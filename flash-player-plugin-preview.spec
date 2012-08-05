@@ -1,7 +1,7 @@
 
 %define name	flash-player-plugin-preview
 # see http://www.adobe.com/software/flash/about/ for version test
-%define version	11.2.202.235
+%define version	11.2.202.236
 %define plev	p3
 %define tardate	111710
 %define rel	1
@@ -84,7 +84,7 @@ license.
 %ifarch %ix86
 #%define downurl1 http://download.macromedia.com/pub/labs/flashplayer10/flashplayer10_2_%{plev}_32bit_linux_%{tardate}.tar.gz
 %define downurl1 http://fpdownload.macromedia.com/get/flashplayer/pdc/%{version}/install_flash_player_11_linux.i386.tar.gz
-%define tmd5sum1 edc3326dd25adee13a8109834d8c05ce
+%define tmd5sum1 00b3dd02b9ac600272440ebadda724e1
 %define downurl2 %nil
 %define tmd5sum2 %nil
 %define tarname install_flash_player_11_linux.i386.tar.gz
@@ -93,7 +93,7 @@ license.
 %endif
 %ifarch x86_64
 %define downurl1 http://fpdownload.macromedia.com/get/flashplayer/pdc/%{version}/install_flash_player_11_linux.x86_64.tar.gz
-%define tmd5sum1 144b9ab0fec08d589b5369b1417d8332
+%define tmd5sum1 f3cec2b9b38bd58f5e20f543d957bc17
 %define downurl2 %nil
 %define tmd5sum2 %nil
 %define tarname install_flash_player_11_linux.x86_64.tar.gz
