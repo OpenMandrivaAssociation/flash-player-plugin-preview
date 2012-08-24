@@ -5,7 +5,7 @@
 %endif
 
 Summary:	Flash Player plugin for browsers
-Name:		flash-player-plugin
+Name:		flash-player-plugin-preview
 Version:	11.2.202.238
 Release:	%mkrel 1
 License:	Proprietary
