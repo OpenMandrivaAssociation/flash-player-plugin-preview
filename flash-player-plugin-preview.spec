@@ -7,7 +7,7 @@
 Summary:	Flash Player plugin for browsers
 Name:		flash-player-plugin-preview
 Version:	11.2.202.238
-Release:	%mkrel 2
+Release:	3
 License:	Proprietary
 URL:		http://www.adobe.com/products/flashplayer/
 Group:		Networking/WWW
