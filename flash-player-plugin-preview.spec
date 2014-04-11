@@ -6,8 +6,8 @@
 
 Summary:	Flash Player plugin for browsers
 Name:		flash-player-plugin-preview
-Version:	11.2.202.238
-Release:	%mkrel 2
+Version:	11.2.202.350
+Release:	1
 License:	Proprietary
 URL:		http://www.adobe.com/products/flashplayer/
 Group:		Networking/WWW
@@ -68,7 +68,6 @@ Obsoletes:	flash-player-plugin10.2 < 10.2.152
 Provides:	flash-player-plugin11
 Obsoletes:	flash-player-plugin11
 BuildRequires:	kde4-macros
-BuildRoot:	%{_tmppath}/%{name}-root
 
 %description
 Adobe Flash Player plugin for browsers.
@@ -141,9 +140,9 @@ and as %{_libdir}/mozilla/plugins/LICENSE.flashplayer.
 
 %ifarch %ix86
 %define downurl1	http://fpdownload.macromedia.com/get/flashplayer/pdc/%{version}/flash-plugin-%{version}-release.i386.rpm
-%define tmd5sum1	2a23b92fa08c555f8520d7a619175dc5
+%define tmd5sum1	f4b30ff4c22a121ac45b5c2a08c60a0e
 %define downurl2	http://linuxdownload.adobe.com/linux/i386/flash-plugin-%{version}-release.i386.rpm
-%define tmd5sum2	5022e2d969b88519f3a03c45ee778eac
+%define tmd5sum2	250cb9abc29a8b749131f0bab9209ac4
 %define downurl3	%nil
 %define tmd5sum3	%nil
 %define tarname		flash-plugin-%{version}-release.i386.rpm
@@ -153,9 +152,9 @@ and as %{_libdir}/mozilla/plugins/LICENSE.flashplayer.
 
 %ifarch x86_64
 %define downurl1	http://fpdownload.macromedia.com/get/flashplayer/pdc/%{version}/flash-plugin-%{version}-release.x86_64.rpm
-%define tmd5sum1	bc361c57e83b9fbabd02a9392bf2839f
+%define tmd5sum1	8e042722bea5d48f137237e882ee6169
 %define downurl2	http://linuxdownload.adobe.com/linux/x86_64/flash-plugin-%{version}-release.x86_64.rpm
-%define tmd5sum2	b1448a4c650b2198a3de6890ff2eaf78
+%define tmd5sum2	c3fab82b97e85663f7f3a8ef20635fc0
 %define downurl3	%nil
 %define downurl3	%nil
 %define tarname		flash-plugin-%{version}-release.x86_64.rpm
@@ -239,9 +238,6 @@ tar_extract() {
 	rm -rf "\$extractdir"
 }
 EOF
-
-%clean
-rm -rf %{buildroot}
 
 %pre
 checkmd5sum() {
@@ -388,6 +384,5 @@ sed -i 's,=personal,=network-and-connectivity,' %{_kde_services}/kcm_adobe_flash
 %ghost %{_iconsdir}/hicolor/*/apps/flash-player-properties.png
 
 %files kde
-%defattr(-,root,root)
 %ghost %{_kde_libdir}/kde4/kcm_adobe_flash_player.so
 %ghost %{_kde_services}/kcm_adobe_flash_player.desktop
