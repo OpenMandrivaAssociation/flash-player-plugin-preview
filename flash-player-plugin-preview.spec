@@ -9,7 +9,7 @@ Name:		flash-player-plugin-preview
 Version:	11.2.202.350
 Release:	3
 License:	Proprietary
-URL:		http://www.adobe.com/products/flashplayer/
+URL:		https://www.adobe.com/products/flashplayer/
 Group:		Networking/WWW
 ExclusiveArch:	%ix86 x86_64
 Requires(pre):	curl
